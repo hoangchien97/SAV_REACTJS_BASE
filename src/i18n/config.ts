@@ -5,6 +5,7 @@ import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import de from "i18n/locales/de.json";
 import en from "i18n/locales/en.json";
+import vi from "i18n/locales/vi.json";
 
 export const resources = {
   en: {
@@ -12,6 +13,9 @@ export const resources = {
   },
   de: {
     translation: de,
+  },
+  vi: {
+    translation: vi,
   },
 } as const;
 
@@ -32,7 +36,7 @@ i18n
     debug: true,
     lng: "en",
     resources,
-    supportedLngs: ["en", "de"],
+    supportedLngs: ["en", "de", 'vi'],
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
