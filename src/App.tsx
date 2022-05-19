@@ -2,10 +2,10 @@
 import React, { Suspense } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { Header } from "components/Layout/Header/Header";
 import { useTranslation } from "react-i18next";
 import "i18n/config";
 import { LANGUAGES } from "constants/index";
+import { Header } from "components/Layout/Header";
 
 // loading component for suspense fallback
 const Loader = () => (
