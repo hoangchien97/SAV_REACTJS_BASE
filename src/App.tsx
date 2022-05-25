@@ -5,7 +5,8 @@ import "./App.css";
 import { useTranslation } from "react-i18next";
 import "i18n/config";
 import { LANGUAGES } from "constants/index";
-import { Header } from "components/Layout/Header";
+import Header from "components/Layout/Header";
+import Footer from "components/Layout/Footer";
 
 // loading component for suspense fallback
 const Loader = () => (
@@ -70,6 +71,7 @@ function App() {
             ))}
           </ul>
         </header>
+        <Footer />
       </div>
     </Suspense>
   );
