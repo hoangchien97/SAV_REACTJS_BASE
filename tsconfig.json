@@ -15,10 +15,12 @@
     "isolatedModules": false,
     "noEmit": true,
     "jsx": "preserve",
-    // "baseUrl": ".",
     "baseUrl": "./src",
     "paths": {
-      "@*": ["./*"]
+      "@": ["./src"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
     }
   },
   "include": [

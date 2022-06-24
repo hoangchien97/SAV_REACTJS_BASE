@@ -1,9 +1,8 @@
 import { Button, Drawer, Layout, Menu, Space } from "antd";
 import React, { Fragment, useState } from "react";
 import "./Header.scss";
-import MenuFoldOutlined, {
+import {
   AlignRightOutlined,
-  StarOutlined,
 } from "@ant-design/icons";
 
 const items = [

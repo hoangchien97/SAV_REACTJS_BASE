@@ -7,19 +7,6 @@ import Profile from "@/pages/Profile";
 import SignUp from "@/pages/SignUp";
 import { useRoutes } from "react-router-dom";
 
-// Public routes
-// const publicRoutes = [
-//   { path: "/", component: Home },
-//   { path: "/about", component: About },
-//   {
-//     path: "/profile/@:name",
-//     component: Profile,
-//     children: [{ path: "/", element: Login }],
-//   },
-//   { path: "/upload", component: Upload, layout: HeaderOnly },
-//   { path: "login", component: Login, layout: null },
-// ];
-
 function Router() {
   let element = useRoutes([
     {
