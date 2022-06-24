@@ -3,10 +3,13 @@ import React, { Suspense } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { useTranslation } from "react-i18next";
-import "i18n/config";
-import { LANGUAGES } from "constants/index";
-import Header from "components/Layout/Header";
-import Footer from "components/Layout/Footer";
+import "./i18n/config";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./routes/routes";
+import { LANGUAGES } from "./constants";
+import "antd/dist/antd.min.css";
+// Lazy load - Code splitting
+// const Login = React.lazy(() => import("pages/Login"));
 
 // loading component for suspense fallback
 const Loader = () => (
@@ -33,16 +36,10 @@ function App() {
   return (
     <Suspense fallback={<Loader />}>
       <div className="App">
-        <Header />
-        <div>{t("title", { framework: "React" })}</div>
+        {/* <Header /> */}
+        {/* <div>{t("title", { framework: "React" })}</div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          {/* <button type="button" onClick={() => changeLanguage("de")}>
-            de
-          </button>
-          <button type="button" onClick={() => changeLanguage("en")}>
-            en
-          </button> */}
 
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li>
@@ -70,8 +67,10 @@ function App() {
               </li>
             ))}
           </ul>
-        </header>
-        <Footer />
+        </header> */}
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
       </div>
     </Suspense>
   );

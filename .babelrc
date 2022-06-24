@@ -1,4 +1,14 @@
 {
   "presets": [],
-  "plugins": ["@emotion"]
+  "plugins": [
+    "@emotion",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@": "./src"
+        }
+      }
+    ]
+  ]
 }

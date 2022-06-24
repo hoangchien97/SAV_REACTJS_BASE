@@ -3,9 +3,9 @@ import { initReactI18next } from "react-i18next";
 
 import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
-import de from "i18n/locales/de.json";
-import en from "i18n/locales/en.json";
-import vi from "i18n/locales/vi.json";
+import de from "./locales/de.json";
+import en from "./locales/en.json";
+import vi from "./locales/vi.json";
 
 export const resources = {
   en: {
@@ -36,7 +36,7 @@ i18n
     debug: true,
     lng: "en",
     resources,
-    supportedLngs: ["en", "de", 'vi'],
+    supportedLngs: ["en", "de", "vi"],
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

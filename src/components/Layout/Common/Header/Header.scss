@@ -1,0 +1,54 @@
+@import "./../../../../styles/scss/variables";
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+
+  &--black {
+    color: $color-black;
+  }
+
+  &__nav {
+    display: none !important;
+  }
+
+  @media (min-width: $s) {
+    display: flex;
+    &__nav {
+      display: flex !important;
+      width: 100%;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+[data-theme="dark"] .site-layout .site-layout-background {
+  background: #141414;
+}
+
+.hamburger {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+
+  @media (min-width: $s) {
+    justify-content: center;
+  }
+}
