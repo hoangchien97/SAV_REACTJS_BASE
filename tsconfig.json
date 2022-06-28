@@ -15,12 +15,9 @@
     "isolatedModules": false,
     "noEmit": true,
     "jsx": "preserve",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@": ["./src"],
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@utils/*": ["utils/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": [
@@ -32,5 +29,5 @@
     "src/**/*",
     "config-overrides.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "public/dist"]
 }
