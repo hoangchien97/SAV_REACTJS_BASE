@@ -1,10 +1,11 @@
-import AuthLayout from "@/components/Layout/AuthLayout";
-import MainLayout from "@/components/Layout/MainLayout";
-import About from "@/pages/About";
-import Home from "@/pages/Home";
-import Login from "@/pages/Login";
-import Profile from "@/pages/Profile";
-import SignUp from "@/pages/SignUp";
+
+import AuthLayout from "@components/Layout/AuthLayout";
+import MainLayout from "@components/Layout/MainLayout";
+import About from "@pages/About";
+import Home from "@pages/Home";
+import Login from "@pages/Login";
+import Profile from "@pages/Profile";
+import SignUp from "@pages/SignUp";
 import { useRoutes } from "react-router-dom";
 
 function Router() {

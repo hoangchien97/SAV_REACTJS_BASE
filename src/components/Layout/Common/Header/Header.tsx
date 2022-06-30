@@ -1,9 +1,7 @@
 import { Button, Drawer, Layout, Menu, Space } from "antd";
 import React, { Fragment, useState } from "react";
 import "./Header.scss";
-import {
-  AlignRightOutlined,
-} from "@ant-design/icons";
+import { AlignRightOutlined } from "@ant-design/icons";
 
 const items = [
   { label: "item 1", key: "item-1" }, // remember to pass the key prop
@@ -28,14 +26,14 @@ const Header = () => {
   };
 
   return (
-    <Layout.Header className="header">
+    <Layout.Header className="header" color="yellow">
       <div className="logo" />
       {/* <Menu theme="dark" mode="horizontal"  defaultSelectedKeys={["2"]} items={items}> */}
       <Menu theme="dark" mode="horizontal" className="header__nav">
         {items.map((item, index) => (
           <Fragment key={index}>
             {!item.children ? (
-              <Menu.Item>{item.label}</Menu.Item>
+              <Menu.Item className="header--black">{item.label}</Menu.Item>
             ) : (
               <Menu.SubMenu title={item.label} key={item.label}>
                 <Menu.Item>{item.label}</Menu.Item>

@@ -12,22 +12,11 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.json",
-    "**/*.scss",
-    "src/**/*",
-    "config-overrides.js"
-  ],
-  "exclude": ["node_modules", "public/dist"]
+  "include": ["src"],
+  "extends": "./tsconfig.paths.json" // 👈 add this line
 }
