@@ -9,3 +9,7 @@ export function login(params: LoginRequest): Promise<LoginResponse> {
 export function register(params: RegisterRequest): Promise<AxiosResponse> {
   return Instance.post(`api/register`, params);
 }
+
+export function productsCataLogs(params: any): Promise<AxiosResponse> {
+  return Instance.post(`api/register`, params);
+}

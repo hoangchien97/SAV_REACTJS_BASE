@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { useTranslation } from "react-i18next";
@@ -8,6 +8,8 @@ import { BrowserRouter } from "react-router-dom";
 import Router from "./routes/routes";
 import { LANGUAGES } from "./constants";
 import "antd/dist/antd.min.css";
+import { useAppDispatch } from "@store/hooks";
+import { commonActions } from "@store/slices/common";
 // Lazy load - Code splitting
 // const Login = React.lazy(() => import("pages/Login"));
 
@@ -32,6 +34,12 @@ function App() {
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    console.log("innerWidth", window.innerWidth + "px");
+    dispatch(commonActions.setViewPort(window.innerWidth));
+  }, []);
 
   return (
     <Suspense fallback={<Loader />}>
