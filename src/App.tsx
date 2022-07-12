@@ -10,8 +10,13 @@ import { LANGUAGES } from "./constants";
 import "antd/dist/antd.min.css";
 import { useAppDispatch } from "@store/hooks";
 import { commonActions } from "@store/slices/common";
+import styled from "@emotion/styled";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // Lazy load - Code splitting
 // const Login = React.lazy(() => import("pages/Login"));
+
+const ToastStyled = styled(ToastContainer)``;
 
 // loading component for suspense fallback
 const Loader = () => (
@@ -79,6 +84,15 @@ function App() {
         <BrowserRouter>
           <Router />
         </BrowserRouter>
+        <ToastStyled
+          position="top-right"
+          hideProgressBar
+          closeOnClick={false}
+          closeButton={false}
+          pauseOnFocusLoss={false}
+          draggable={false}
+          pauseOnHover
+        />
       </div>
     </Suspense>
   );

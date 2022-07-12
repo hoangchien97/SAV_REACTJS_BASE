@@ -8,6 +8,7 @@ import { getProfile, login } from "@services/auth";
 import { useAppDispatch } from "@store/hooks";
 import { useNavigate } from "react-router-dom";
 import { authActions } from "@store/slices/auth";
+import useNotification from "@hooks/useNotification";
 
 interface ILogin {
   username: string;
@@ -15,6 +16,7 @@ interface ILogin {
 }
 
 export const LoginForm = () => {
+  const { showToast } = useNotification();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -37,8 +39,8 @@ export const LoginForm = () => {
     try {
       const res = await getProfile();
       dispatch(authActions.saveProfile(res));
-    } catch (error) {
-      throw error;
+    } catch (error: any) {
+      showToast("error", error.message);
     }
   };
 
@@ -56,12 +58,12 @@ export const LoginForm = () => {
       dispatch(authActions.login(res.AccessToken));
       await fetchProfile();
       navigate("/");
-      // toast.success("Login success");
+      showToast("success", "Login success");
       setTimeout(() => {
         actions.setSubmitting(false);
       }, 1000);
-    } catch (error) {
-      // toast.error("Email or password incorrect");
+    } catch (error: any) {
+      showToast("error", error.message);
     }
   };
 

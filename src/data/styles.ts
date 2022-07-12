@@ -1,6 +1,18 @@
 export const colors = {
+  white: "#ffffff",
   black: "#000000",
+  blackText: "#0d0d0d",
   red: "#CC0000",
+  warning: "#FFC896",
+  warningBorder: "#F1D765",
+  warningTitle: "#DF5000",
+  success: "#ACF0BB",
+  successBorder: "#B7DC87",
+  successTitle: "#09B630",
+  error: "#FFEAEA",
+  errorBorder: "#CD0D0D",
+  errorTitle: "#DF5000",
+  default: "",
 };
 
 export const fonts = {

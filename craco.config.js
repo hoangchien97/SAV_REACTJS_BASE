@@ -25,6 +25,9 @@ module.exports = {
       "@interfaces": path.resolve(__dirname, "src/interfaces"),
       "@store": path.resolve(__dirname, "src/store"),
       "@services": path.resolve(__dirname, "src/services"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
+      "@data": path.resolve(__dirname, "src/data"),
+      "@constants": path.resolve(__dirname, "src/constants"),
     },
   },
 };

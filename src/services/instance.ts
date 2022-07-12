@@ -1,4 +1,4 @@
-import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
 const __DEV__ = process.env.NODE_ENV === "development";
 
@@ -56,22 +56,22 @@ Instance.interceptors.response.use(
   (response: AxiosResponse) => {
     return response.data.Data;
   },
-  async (error: { response: any; config?: any }) => {
+  async (error: AxiosError<any>) => {
     if (__DEV__) {
       console.error("API Response Error:", error);
     }
     const { response, config } = error;
 
-    if (response.data.StatusCode === 401) {
+    if (response?.data?.status === 401) {
       window.location.replace("/login");
     }
 
     // TODO: handle refresh token
-    // if (response.data.StatusCode === 403) {
+    // if (response.data.status === 403) {
     //  ...something
     // }
 
-    const errorMessage = error?.response?.data?.message;
+    const errorMessage = error?.response?.data?.Message;
     if (errorMessage) {
       return Promise.reject(new Error(errorMessage));
     }
