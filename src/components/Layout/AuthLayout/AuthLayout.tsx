@@ -1,16 +1,19 @@
-import "./AuthLayout.scss";
+// import styles from "./index.module.scss";
 import { Outlet } from "react-router-dom";
-import Header from "@/components/Layout/Common/Header";
-// export const Main = styled.div``;
+import styled from "@emotion/styled";
+
+// using style component
+const Wrapper = styled.div``;
+const Main = styled.div``;
 
 function AuthLayout() {
   return (
-    <div className="wrapper">
-      <Header />
-      <div className="main">
+    <Wrapper className="wrapper">
+      {/* <Header /> */}
+      <Main>
         <Outlet />
-      </div>
-    </div>
+      </Main>
+    </Wrapper>
   );
 }
 export default AuthLayout;

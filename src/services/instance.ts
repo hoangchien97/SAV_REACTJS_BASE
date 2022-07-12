@@ -62,6 +62,10 @@ Instance.interceptors.response.use(
     }
     const { response, config } = error;
 
+    if (response.data.status === 401) {
+      window.location.replace("/login");
+    }
+
     // TODO: handle refresh token
     // if (response.data.status === 403) {
     //  ...something

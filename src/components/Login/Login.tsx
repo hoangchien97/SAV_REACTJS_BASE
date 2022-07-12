@@ -1,9 +1,8 @@
 import { Input } from "@components/Form/Input";
 import React from "react";
-import { useState } from "react";
-import { Formik, Form, FastField, Field, FormikHelpers } from "formik";
+import { Formik, Form, Field, FormikHelpers } from "formik";
 import * as Yup from "yup";
-import "./Login.scss";
+import styles from "./index.module.scss";
 
 interface ILogin {
   username: string;
@@ -48,12 +47,12 @@ export const LoginForm = () => {
 
         return (
           <>
-            <div className="login">
-              <div className="card">
-                <div className="card__left"></div>
-                <div className="card__right form">
-                  <div className="login__logo">LOGO</div>
-                  <div className="login__title">SAVVYCOM</div>
+            <div className={styles.login}>
+              <div className={styles.card}>
+                <div className={styles.cardLeft}></div>
+                <div className={styles.cardRight}>
+                  <div className={styles.logo}>LOGO</div>
+                  <div className={styles.title}>SAVVYCOM</div>
                   <Form>
                     <Field
                       name="username"
@@ -66,7 +65,7 @@ export const LoginForm = () => {
                       component={Input}
                       placeholder="Password"
                     />
-                    <button className="form__button" type="submit">
+                    <button className={styles.formButton} type="submit">
                       Submit
                     </button>
                   </Form>
