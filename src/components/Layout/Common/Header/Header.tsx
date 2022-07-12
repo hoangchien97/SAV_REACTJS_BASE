@@ -21,7 +21,6 @@ const Header = () => {
   };
 
   const onClose = () => {
-    debugger;
     setVisible(false);
   };
 

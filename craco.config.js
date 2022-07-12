@@ -23,6 +23,7 @@ module.exports = {
       "@pages": path.resolve(__dirname, "src/pages"),
       "@interfaces": path.resolve(__dirname, "src/interfaces"),
       "@store": path.resolve(__dirname, "src/store"),
+      "@assets": path.resolve(__dirname, "public/assets"),
     },
   },
 };
