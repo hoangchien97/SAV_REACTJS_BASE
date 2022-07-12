@@ -1,6 +1,6 @@
-
 import AuthLayout from "@components/Layout/AuthLayout";
 import MainLayout from "@components/Layout/MainLayout";
+import NotFound from "@components/NotFound";
 import About from "@pages/About";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
@@ -29,6 +29,14 @@ function Router() {
         { path: "about", element: <About /> },
         { path: "profile", element: <Profile /> },
       ],
+    },
+    {
+      path: "401",
+      element: <p>No Authorization Found</p>,
+    },
+    {
+      path: "*",
+      element: <NotFound />,
     },
   ]);
 

@@ -1,6 +1,10 @@
 export interface LoginRequest {
-  email: string;
-  password: string;
+  Email: string;
+  Password: string;
+}
+
+export interface LoginResponse {
+  AccessToken: string;
 }
 export interface RegisterRequest {
   username: string;
@@ -10,4 +14,12 @@ export interface RegisterRequest {
   acceptTerms: boolean;
 }
 
-export interface LoginResponse {}
+export interface ProfileResponse {
+  Id: number | string;
+  Name?: string;
+  Phone?: string;
+  Email: string;
+  Address?: string;
+  AvatarImage?: string;
+  Permission?: string;
+}

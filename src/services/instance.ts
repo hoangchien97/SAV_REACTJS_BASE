@@ -54,7 +54,7 @@ Instance.interceptors.request.use(
 
 Instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response.data;
+    return response.data.Data;
   },
   async (error: { response: any; config?: any }) => {
     if (__DEV__) {
@@ -62,12 +62,12 @@ Instance.interceptors.response.use(
     }
     const { response, config } = error;
 
-    if (response.data.status === 401) {
+    if (response.data.StatusCode === 401) {
       window.location.replace("/login");
     }
 
     // TODO: handle refresh token
-    // if (response.data.status === 403) {
+    // if (response.data.StatusCode === 403) {
     //  ...something
     // }
 

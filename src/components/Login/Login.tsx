@@ -3,6 +3,11 @@ import React from "react";
 import { Formik, Form, Field, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import styles from "./index.module.scss";
+import { LoginRequest } from "@interfaces/auth";
+import { getProfile, login } from "@services/auth";
+import { useAppDispatch } from "@store/hooks";
+import { useNavigate } from "react-router-dom";
+import { authActions } from "@store/slices/auth";
 
 interface ILogin {
   username: string;
@@ -10,6 +15,9 @@ interface ILogin {
 }
 
 export const LoginForm = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const initialValues = {
     username: "",
     password: "",
@@ -25,12 +33,36 @@ export const LoginForm = () => {
       .max(40, "Password must not exceed 40 characters"),
   });
 
+  const fetchProfile = async () => {
+    try {
+      const res = await getProfile();
+      dispatch(authActions.saveProfile(res));
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const onSubmit = async (values: ILogin, actions: FormikHelpers<ILogin>) => {
-    console.log("values", values);
-    console.log("actions", actions);
-    setTimeout(() => {
-      actions.setSubmitting(false);
-    }, 1000);
+    // console.log("values", values);
+    // console.log("actions", actions);
+    try {
+      const params: LoginRequest = {
+        Email: values.username,
+        Password: values.password,
+      };
+      const res = await login(params);
+      localStorage.setItem("accessToken", res.AccessToken);
+
+      dispatch(authActions.login(res.AccessToken));
+      await fetchProfile();
+      navigate("/");
+      // toast.success("Login success");
+      setTimeout(() => {
+        actions.setSubmitting(false);
+      }, 1000);
+    } catch (error) {
+      // toast.error("Email or password incorrect");
+    }
   };
 
   return (

@@ -17,13 +17,14 @@ module.exports = {
   webpack: {
     alias: {
       "@": path.resolve(__dirname, "src"),
+      "@assets": path.resolve(__dirname, "public/assets"),
       "@components": path.resolve(__dirname, "src/components"),
       "@utils": path.resolve(__dirname, "src/utils"),
       "@styles": path.resolve(__dirname, "src/styles"),
       "@pages": path.resolve(__dirname, "src/pages"),
       "@interfaces": path.resolve(__dirname, "src/interfaces"),
       "@store": path.resolve(__dirname, "src/store"),
-      "@assets": path.resolve(__dirname, "public/assets"),
+      "@services": path.resolve(__dirname, "src/services"),
     },
   },
 };
