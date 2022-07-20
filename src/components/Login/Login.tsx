@@ -57,11 +57,8 @@ export const LoginForm = () => {
 
       dispatch(authActions.login(res.AccessToken));
       await fetchProfile();
-      navigate("/");
+      navigate("/home");
       showToast("success", "Login success");
-      setTimeout(() => {
-        actions.setSubmitting(false);
-      }, 1000);
     } catch (error: any) {
       showToast("error", error.message);
     }
@@ -100,7 +97,7 @@ export const LoginForm = () => {
                       placeholder="Password"
                     />
                     <button className={styles.formButton} type="submit">
-                      Submit
+                      Login
                     </button>
                   </Form>
                 </div>

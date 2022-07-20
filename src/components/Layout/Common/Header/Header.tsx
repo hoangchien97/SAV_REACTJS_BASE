@@ -4,7 +4,6 @@ import "./Header.scss";
 import { AlignRightOutlined } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
-// import useNotification from "@hooks/useNotification";
 
 const items = [
   { label: "Home", key: "home", path: "/home" }, // remember to pass the key prop
@@ -26,12 +25,10 @@ const MenuItem = styled(Menu.Item)<{ isActiveMenu: boolean }>`
 
 const Header = () => {
   const location = useLocation();
-  // const { showToast } = useNotification();
 
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
-    // showToast("error", "ahihi");
     setVisible(true);
   };
 
@@ -59,7 +56,7 @@ const Header = () => {
                 {item.itemsChildren.map((itemChild) => (
                   <MenuItem
                     isActiveMenu={location.pathname === itemChild.path}
-                    key={`children-${item.key}`}
+                    key={`children-${itemChild.key}`}
                   >
                     <Link to={itemChild.path}>{itemChild.label}</Link>
                   </MenuItem>
