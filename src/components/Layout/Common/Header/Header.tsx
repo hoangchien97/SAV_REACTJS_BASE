@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import Select, { SingleValue } from 'react-select';
 import { LANGUAGES } from '@constants';
 import { useTranslation } from 'react-i18next';
-import { LanguageOption } from '@interfaces';
+import { LanguageOption } from '@interfaces/index';
 
 const items = [
   { label: 'home', key: 'home', path: '/home' }, // remember to pass the key prop
