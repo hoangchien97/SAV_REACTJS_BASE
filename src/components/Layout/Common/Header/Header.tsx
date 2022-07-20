@@ -2,21 +2,36 @@ import { Button, Drawer, Layout, Menu, Space } from "antd";
 import React, { Fragment, useState } from "react";
 import "./Header.scss";
 import { AlignRightOutlined } from "@ant-design/icons";
+import { Link, useLocation } from "react-router-dom";
+import styled from "@emotion/styled";
+// import useNotification from "@hooks/useNotification";
 
 const items = [
-  { label: "item 1", key: "item-1" }, // remember to pass the key prop
-  { label: "item 2", key: "item-2" }, // which is required
+  { label: "Home", key: "home", path: "/home" }, // remember to pass the key prop
+  { label: "About", key: "about", path: "/about" }, // which is required
   {
-    label: "sub menu",
-    key: "submenu",
-    children: [{ label: "item 3", key: "submenu-item-1" }],
+    label: "Services",
+    key: "Services",
+    path: "",
+    itemsChildren: [
+      { label: "Service 1", key: "service_1", path: "/profile" },
+      { label: "Service 2", key: "service_2", path: "/profile2" },
+    ],
   },
 ];
 
+const MenuItem = styled(Menu.Item)<{ isActiveMenu: boolean }>`
+  background-color: ${(menu) => (menu.isActiveMenu ? "#1890ff" : "initial")};
+`;
+
 const Header = () => {
+  const location = useLocation();
+  // const { showToast } = useNotification();
+
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
+    // showToast("error", "ahihi");
     setVisible(true);
   };
 
@@ -29,19 +44,33 @@ const Header = () => {
       <div className="logo" />
       {/* <Menu theme="dark" mode="horizontal"  defaultSelectedKeys={["2"]} items={items}> */}
       <Menu theme="dark" mode="horizontal" className="header__nav">
-        {items.map((item, index) => (
-          <Fragment key={index}>
-            {!item.children ? (
-              <Menu.Item className="header--black">{item.label}</Menu.Item>
+        {items.map((item) => (
+          <Fragment>
+            {!item.itemsChildren ? (
+              <MenuItem
+                key={`${item.key}`}
+                isActiveMenu={location.pathname === item.path}
+                className="header--black"
+              >
+                <Link to={item.path}>{item.label}</Link>
+              </MenuItem>
             ) : (
-              <Menu.SubMenu title={item.label} key={item.label}>
-                <Menu.Item>{item.label}</Menu.Item>
+              <Menu.SubMenu title={item.label}>
+                {item.itemsChildren.map((itemChild) => (
+                  <MenuItem
+                    isActiveMenu={location.pathname === itemChild.path}
+                    key={`children-${item.key}`}
+                  >
+                    <Link to={itemChild.path}>{itemChild.label}</Link>
+                  </MenuItem>
+                ))}
               </Menu.SubMenu>
             )}
           </Fragment>
         ))}
       </Menu>
 
+      {/* Button Hamburger */}
       <div className="hamburger" onClick={showDrawer}>
         <AlignRightOutlined
           className="icon-hamburger"
@@ -50,6 +79,7 @@ const Header = () => {
         />
       </div>
 
+      {/* Reponsive Mobile */}
       <Drawer
         title="Drawer with extra actions"
         placement="right"

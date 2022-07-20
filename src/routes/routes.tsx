@@ -1,12 +1,13 @@
-import AuthLayout from "@components/Layout/AuthLayout";
-import MainLayout from "@components/Layout/MainLayout";
-import NotFound from "@components/NotFound";
-import About from "@pages/About";
-import Home from "@pages/Home";
-import Login from "@pages/Login";
-import Profile from "@pages/Profile";
-import SignUp from "@pages/SignUp";
+import React from "react";
 import { useRoutes } from "react-router-dom";
+const Home = React.lazy(() => import("@pages/Home"));
+const Login = React.lazy(() => import("@pages/Login"));
+const Profile = React.lazy(() => import("@pages/Profile"));
+const SignUp = React.lazy(() => import("@pages/SignUp"));
+const About = React.lazy(() => import("@pages/About"));
+const NotFound = React.lazy(() => import("@components/NotFound"));
+const AuthLayout = React.lazy(() => import("@components/Layout/AuthLayout"));
+const MainLayout = React.lazy(() => import("@components/Layout/MainLayout"));
 
 function Router() {
   let element = useRoutes([
@@ -14,7 +15,7 @@ function Router() {
       // AuthLayout
       element: <AuthLayout />,
       children: [
-        { path: "/login", element: <Login /> },
+        { path: "login", element: <Login /> },
         { path: "signup", element: <SignUp /> },
       ],
     },
@@ -23,16 +24,12 @@ function Router() {
       element: <MainLayout />,
       children: [
         {
-          path: "/",
+          path: "/home",
           element: <Home />,
         },
-        { path: "about", element: <About /> },
-        { path: "profile", element: <Profile /> },
+        { path: "/about", element: <About /> },
+        { path: "/profile", element: <Profile /> },
       ],
-    },
-    {
-      path: "401",
-      element: <p>No Authorization Found</p>,
     },
     {
       path: "*",
