@@ -1,0 +1,65 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M0 0.92v405.631l199.078-199.078-199.078-206.553z",
+          "M620.159 206.553l199.078 199.078v-405.631l-199.078 206.553z",
+          "M24.48 447.463l371.527 545.55-178.405-738.614-193.121 193.063z",
+          "M421.761 993.014l371.528-545.55-193.122-193.063-178.405 738.614z",
+          "M555.545 246.4h-293.625l146.812 639.749 146.813-639.749z"
+        ],
+        "width": 819,
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "rfl-icon"
+        ],
+        "grid": 0
+      },
+      "attrs": [],
+      "properties": {
+        "order": 60,
+        "id": 43,
+        "name": "redfox",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 0,
+      "iconIdx": 43
+    }
+  ],
+  "height": 1024,
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon",
+      "name": "icomoon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}

@@ -4,6 +4,7 @@ import "./Header.scss";
 import { AlignRightOutlined } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
+import { Svg } from "@components/common/Svg";
 
 const items = [
   { label: "Home", key: "home", path: "/home" }, // remember to pass the key prop
@@ -92,6 +93,8 @@ const Header = () => {
           </Space>
         }
       >
+        <Svg name="redfox" width={20} height={27} fill="red" />
+
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
