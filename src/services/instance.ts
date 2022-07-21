@@ -58,6 +58,7 @@ Instance.interceptors.response.use(
     if (__DEV__) {
       console.error('API Response Error:', error);
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { response, config } = error;
 
     if (response?.data?.status === 401) {

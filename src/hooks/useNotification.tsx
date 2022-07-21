@@ -1,4 +1,4 @@
-import { Notification } from "@components/common/Notifications";
+import { Notification } from "@components/Common/Notifications";
 import { toast } from "react-toastify";
 
 const useNotification = () => {
