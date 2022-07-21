@@ -7,7 +7,7 @@ import 'antd/dist/antd.min.css';
 import styled from '@emotion/styled';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from '@components/Loader';
+import Loading from '@components/Loading';
 
 const ToastStyled = styled(ToastContainer)`
   .Toastify__toast {
@@ -22,7 +22,7 @@ const ToastStyled = styled(ToastContainer)`
 
 function App() {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<Loading />}>
       <div className="App">
         <BrowserRouter>
           <Router />
