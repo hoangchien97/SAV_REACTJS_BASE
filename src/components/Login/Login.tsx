@@ -53,7 +53,6 @@ export const LoginForm = () => {
         Password: values.password,
       };
       const res = await login(params);
-      localStorage.setItem("accessToken", res.AccessToken);
 
       dispatch(authActions.login(res.AccessToken));
       await fetchProfile();

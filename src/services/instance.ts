@@ -1,13 +1,14 @@
-import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import { store } from '@store';
+import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-const __DEV__ = process.env.NODE_ENV === "development";
+const __DEV__ = process.env.NODE_ENV === 'development';
 
 const Instance = Axios.create({
   timeout: 20000,
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
   },
 
   paramsSerializer(params: { [x: string]: any }) {
@@ -31,11 +32,8 @@ const Instance = Axios.create({
 
 Instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const accessToken = localStorage.getItem("accessToken") || null;
-    // const newConfig = {
-    //   ...requestConfig,
-    //   headers: { ...requestConfig.headers, Authorization: `Bearer ${accessToken}` },
-    // };
+    const state = store.getState();
+    const accessToken = state.auth.accessToken;
     if (accessToken !== null) {
       config.headers = {
         ...config.headers,
@@ -46,10 +44,10 @@ Instance.interceptors.request.use(
   },
   (error: any) => {
     if (__DEV__) {
-      console.error("API Request Error:", error);
+      console.error('API Request Error:', error);
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 Instance.interceptors.response.use(
@@ -58,12 +56,12 @@ Instance.interceptors.response.use(
   },
   async (error: AxiosError<any>) => {
     if (__DEV__) {
-      console.error("API Response Error:", error);
+      console.error('API Response Error:', error);
     }
     const { response, config } = error;
 
     if (response?.data?.status === 401) {
-      window.location.replace("/login");
+      window.location.replace('/login');
     }
 
     // TODO: handle refresh token
@@ -76,7 +74,7 @@ Instance.interceptors.response.use(
       return Promise.reject(new Error(errorMessage));
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default Instance;

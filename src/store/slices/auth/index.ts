@@ -1,6 +1,6 @@
-import { ProfileResponse } from "@interfaces/auth";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppState } from "@store";
+import { ProfileResponse } from '@interfaces/auth';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AppState } from '@store';
 
 interface AuthState {
   accessToken: string | null;
@@ -15,21 +15,19 @@ const initialState: AuthState = {
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     login: (state: AuthState, { payload }: PayloadAction<string>) => {
       state.accessToken = payload;
       state.isLoggedIn = true;
     },
-    saveProfile: (
-      state: AuthState,
-      { payload }: PayloadAction<ProfileResponse>
-    ) => {
+    saveProfile: (state: AuthState, { payload }: PayloadAction<ProfileResponse>) => {
       state.user = payload;
     },
     logout: (state: AuthState) => {
       state.isLoggedIn = false;
+      state.accessToken = null;
       state.user = null;
     },
   },
