@@ -1,33 +1,26 @@
-import React, { Suspense, useEffect } from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
 import './App.css';
 import './i18n/config';
 import { BrowserRouter } from 'react-router-dom';
 import Router from './routes/routes';
 import 'antd/dist/antd.min.css';
-import { useAppDispatch } from '@store/hooks';
-import { commonActions } from '@store/slices/common';
 import styled from '@emotion/styled';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '@components/Loader';
 
-const ToastStyled = styled(ToastContainer)``;
-
-// loading component for suspense fallback
-const Loader = () => (
-  <div className="App">
-    <img src={logo} className="App-logo" alt="logo" />
-    <div>loading...</div>
-  </div>
-);
+const ToastStyled = styled(ToastContainer)`
+  .Toastify__toast {
+    padding: 0;
+    .Toastify__toast-body {
+      padding: 0;
+      margin: 0;
+      align-items: normal;
+    }
+  }
+`;
 
 function App() {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    console.log('innerWidth', window.innerWidth + 'px');
-    dispatch(commonActions.setViewPort(window.innerWidth));
-  }, []);
-
   return (
     <Suspense fallback={<Loader />}>
       <div className="App">
