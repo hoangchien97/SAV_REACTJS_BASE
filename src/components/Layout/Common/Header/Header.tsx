@@ -123,6 +123,8 @@ const Header = () => {
           formatOptionLabel={formatOptionLabel}
           onChange={option => changeLanguage(option)}
         />
+        {/* <Svg name="redfox" width={20} height={27} fill="red" /> */}
+
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
