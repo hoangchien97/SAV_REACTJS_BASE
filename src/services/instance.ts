@@ -1,5 +1,6 @@
 import { store } from '@store';
 import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { history } from '@utils/history';
 
 const __DEV__ = process.env.NODE_ENV === 'development';
 
@@ -62,7 +63,7 @@ Instance.interceptors.response.use(
     const { response, config } = error;
 
     if (response?.data?.status === 401) {
-      window.location.replace('/login');
+      history.push('/login');
     }
 
     // TODO: handle refresh token

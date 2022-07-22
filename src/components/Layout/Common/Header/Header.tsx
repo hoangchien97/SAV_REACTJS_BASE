@@ -1,15 +1,16 @@
-import { Dropdown, Layout, Menu, Popover } from 'antd';
+import { Layout, Menu, Popover } from 'antd';
 import React, { Fragment, useState } from 'react';
 import './Header.scss';
 import { AlignRightOutlined } from '@ant-design/icons';
 import { Link, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '@store/hooks';
-import { selectIsLoggedIn, selectUserProfile } from '@store/slices/auth';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { authActions, selectIsLoggedIn, selectUserProfile } from '@store/slices/auth';
 import { upFromBreakpoint } from '@utils/mixins';
 import { Svg } from '@components/Common/Svg';
 import Drawer from './Drawer';
+import { history } from '@utils/history';
 
 const items = [
   { label: 'home', key: 'home', path: '/home' }, // remember to pass the key prop
@@ -59,28 +60,35 @@ const ItemPopover = styled.div`
   }
 `;
 
-const TextItem = styled.p`
+const TextItem = styled(Link)`
   font-weight: bold;
 `;
 
 const Header = () => {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
+  const dispatch = useAppDispatch();
 
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
   const user = useAppSelector(selectUserProfile);
 
   const location = useLocation();
 
+  const handleLogout = () => {
+    dispatch(authActions.logout());
+  };
+
   const content = (
     <Fragment>
       <ItemPopover>
         <Svg name="my-account" width={20} height={20} />
-        <TextItem>{t('profile')}</TextItem>
+        <TextItem to="/profile">{t('profile')}</TextItem>
       </ItemPopover>
       <ItemPopover>
         <Svg name="log-out" width={20} height={20} fill="white" />
-        <TextItem>{t('logout')}</TextItem>
+        <TextItem to="/login" state={{ from: location }} replace onClick={handleLogout}>
+          {t('logout')}
+        </TextItem>
       </ItemPopover>
     </Fragment>
   );

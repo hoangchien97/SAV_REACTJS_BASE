@@ -6,7 +6,7 @@ const NotFound = React.lazy(() => import('@components/NotFound'));
 const AuthLayout = React.lazy(() => import('@components/Layout/AuthLayout'));
 const MainLayout = React.lazy(() => import('@components/Layout/MainLayout'));
 
-function Router() {
+function Routes() {
   let element = useRoutes([
     // AuthLayout
     {
@@ -28,4 +28,4 @@ function Router() {
   return element;
 }
 
-export default Router;
+export default Routes;
