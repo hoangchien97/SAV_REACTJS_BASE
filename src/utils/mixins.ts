@@ -1,15 +1,11 @@
-import { breakpoints } from "@data/styles";
-import { css } from "@emotion/react";
+import { breakpoints } from '@data/styles';
+import { css } from '@emotion/react';
 
-export const upFromBreakpoint = (
-  breakpoint: keyof typeof breakpoints
-): string => {
+export const upFromBreakpoint = (breakpoint: keyof typeof breakpoints): string => {
   return `@media (min-width: ${breakpoints[breakpoint]}px)`;
 };
 
-export const upToBreakpoint = (
-  breakpoint: keyof typeof breakpoints
-): string => {
+export const upToBreakpoint = (breakpoint: keyof typeof breakpoints): string => {
   return `@media (max-width: ${breakpoints[breakpoint] - 1}px)`;
 };
 
@@ -24,7 +20,7 @@ export const maxWidth = css`
   padding-right: var(--maxWidthPadding);
   padding-left: var(--maxWidthPadding);
 
-  ${upFromBreakpoint("small")} {
+  ${upFromBreakpoint('small')} {
     --maxWidthPadding: 2rem;
   }
 `;

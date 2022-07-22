@@ -7,5 +7,7 @@
   "navbar": {
     "home": "Trang chủ",
     "about": "Thông tin"
-  }
+  },
+  "profile": "Trang cá nhân",
+  "logout": "Đăng xuất"
 }

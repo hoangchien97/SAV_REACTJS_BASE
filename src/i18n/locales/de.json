@@ -7,5 +7,7 @@
   "navbar": {
     "home": "Home DE",
     "about": "About DE"
-  }
+  },
+  "profile": "Profile",
+  "logout": "Logout"
 }

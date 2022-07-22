@@ -1,13 +1,15 @@
-import { Button, Drawer, Layout, Menu, Space } from 'antd';
+import { Dropdown, Layout, Menu, Popover } from 'antd';
 import React, { Fragment, useState } from 'react';
 import './Header.scss';
 import { AlignRightOutlined } from '@ant-design/icons';
 import { Link, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
-import Select, { SingleValue } from 'react-select';
-import { LANGUAGES } from '@constants';
 import { useTranslation } from 'react-i18next';
-import { LanguageOption } from '@interfaces/index';
+import { useAppSelector } from '@store/hooks';
+import { selectIsLoggedIn, selectUserProfile } from '@store/slices/auth';
+import { upFromBreakpoint } from '@utils/mixins';
+import { Svg } from '@components/Common/Svg';
+import Drawer from './Drawer';
 
 const items = [
   { label: 'home', key: 'home', path: '/home' }, // remember to pass the key prop
@@ -23,29 +25,65 @@ const items = [
   },
 ];
 
+const Avatar = styled.img`
+  display: none;
+
+  ${upFromBreakpoint('medium')} {
+    &:hover {
+      cursor: pointer;
+    }
+    display: flex;
+    max-width: 40px !important;
+    align-items: center;
+    align-self: center;
+    height: 40px;
+    width: 100%;
+    border-radius: 50%;
+  }
+`;
+
 const MenuItem = styled(Menu.Item)<{ isActiveMenu: boolean }>`
   background-color: ${menu => (menu.isActiveMenu ? '#1890ff' : 'initial')};
 `;
 
-const Header = () => {
-  const location = useLocation();
+const ItemPopover = styled.div`
+  padding: 8px 4px;
 
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #f2f3f5;
+  }
+`;
+
+const TextItem = styled.p`
+  font-weight: bold;
+`;
+
+const Header = () => {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
 
-  const { t, i18n } = useTranslation();
-  const languages = LANGUAGES;
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const user = useAppSelector(selectUserProfile);
 
-  const currentLanguageCode = localStorage.getItem('i18nextLng') || 'en';
+  const location = useLocation();
 
-  const currentLanguage = languages.find(
-    (language: LanguageOption) => language.code === currentLanguageCode,
+  const content = (
+    <Fragment>
+      <ItemPopover>
+        <Svg name="my-account" width={20} height={20} />
+        <TextItem>{t('profile')}</TextItem>
+      </ItemPopover>
+      <ItemPopover>
+        <Svg name="log-out" width={20} height={20} fill="white" />
+        <TextItem>{t('logout')}</TextItem>
+      </ItemPopover>
+    </Fragment>
   );
-
-  const changeLanguage = (option: SingleValue<LanguageOption> | null) => {
-    if (option) {
-      i18n.changeLanguage(option.code);
-    }
-  };
 
   const showDrawer = () => {
     setVisible(true);
@@ -54,13 +92,6 @@ const Header = () => {
   const onClose = () => {
     setVisible(false);
   };
-
-  const formatOptionLabel = ({ code, name, countryCode }: LanguageOption) => (
-    <div style={{ display: 'flex' }}>
-      <div>{name}</div>
-      <div style={{ marginLeft: '10px', color: '#ccc' }}>{countryCode}</div>
-    </div>
-  );
 
   return (
     <Layout.Header className="header" color="yellow">
@@ -93,42 +124,26 @@ const Header = () => {
         ))}
       </Menu>
 
+      {user && (
+        <Popover
+          content={content}
+          trigger="click"
+          placement="bottomRight"
+          overlayInnerStyle={{
+            width: '200px',
+            borderRadius: '4px',
+          }}
+        >
+          <Avatar src={user.AvatarImage} />
+        </Popover>
+      )}
+
       {/* Button Hamburger */}
       <div className="hamburger" onClick={showDrawer}>
         <AlignRightOutlined className="icon-hamburger" style={{ color: '#ffffff' }} width={20} />
       </div>
-
       {/* Reponsive Mobile */}
-      <Drawer
-        title="Drawer with extra actions"
-        placement="right"
-        width={320}
-        onClose={onClose}
-        visible={visible}
-        extra={
-          <Space>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button type="primary" onClick={onClose}>
-              OK
-            </Button>
-          </Space>
-        }
-      >
-        <Select
-          options={languages}
-          defaultValue={currentLanguage}
-          name="language"
-          getOptionLabel={({ name }) => name}
-          getOptionValue={({ code }) => code}
-          formatOptionLabel={formatOptionLabel}
-          onChange={option => changeLanguage(option)}
-        />
-        {/* <Svg name="redfox" width={20} height={27} fill="red" /> */}
-
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
+      <Drawer handleClose={onClose} visible={visible} />
     </Layout.Header>
   );
 };

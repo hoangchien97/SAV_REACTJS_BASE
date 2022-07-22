@@ -5,7 +5,7 @@ import { AppState } from '@store';
 interface AuthState {
   accessToken: string | null;
   isLoggedIn: boolean;
-  user: any;
+  user: null | ProfileResponse;
 }
 
 const initialState: AuthState = {
@@ -41,3 +41,4 @@ export const authReducer = authSlice.reducer;
 
 // Selectors
 export const selectIsLoggedIn = (state: AppState) => state.auth.isLoggedIn;
+export const selectUserProfile = (state: AppState) => state.auth.user;

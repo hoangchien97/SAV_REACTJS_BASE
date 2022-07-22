@@ -1,5 +1,5 @@
 // @import "./../../../../styles/scss/variables";
-@import "@styles/scss/index.scss";
+@import '@styles/scss/index.scss';
 
 .header {
   display: grid;
@@ -34,25 +34,25 @@
   height: 40px;
   margin: 12px 16px 12px 0px;
   // background: rgba(255, 255, 255, 0.2);
-  background-image: url("./../../../../../public/assets/images/logo-header.jpeg");
+  background-image: url('./../../../../../public/assets/images/logo-header.jpeg');
 }
 
 .site-layout .site-layout-background {
   background: #fff;
 }
 
-[data-theme="dark"] .site-layout .site-layout-background {
+[data-theme='dark'] .site-layout .site-layout-background {
   background: #141414;
 }
 
 .hamburger {
+  cursor: pointer;
   display: flex;
-
   justify-content: flex-end;
   align-items: center;
-  cursor: pointer;
 
   @media (min-width: $s) {
-    justify-content: center;
+    display: none;
+    // justify-content: center;
   }
 }
