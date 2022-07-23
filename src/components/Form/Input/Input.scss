@@ -1,7 +1,8 @@
 @import "@styles/scss/index.scss";
 
 .input {
-  max-width: 220px;
+  // max-width: 220px;
+  width: 100%;
   margin: 0 auto;
   &__label {
     &--required {

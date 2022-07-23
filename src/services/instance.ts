@@ -61,8 +61,7 @@ Instance.interceptors.response.use(
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { response, config } = error;
-
-    if (response?.data?.status === 401) {
+    if (response?.status === 401) {
       history.push('/login');
     }
 

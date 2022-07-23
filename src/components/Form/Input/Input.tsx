@@ -1,7 +1,7 @@
-import { Form } from "formik";
-import React from "react";
-import "./Input.scss";
-import cx from "classnames";
+import { Form } from 'formik';
+import React from 'react';
+import './Input.scss';
+import cx from 'classnames';
 // rafc + Tab
 // rafce + Tab
 
@@ -15,21 +15,14 @@ interface Props {
   form: any;
 }
 
-export const Input = ({
-  name,
-  label,
-  value,
-  placeholder,
-  required = false,
-  ...props
-}: Props) => {
+export const Input = ({ name, label, value, placeholder, required = false, ...props }: Props) => {
   const { field, form } = props;
   const fieldName = field.name;
   const { errors, touched } = form;
   const showError = errors[fieldName] && touched[fieldName];
 
   return (
-    <Form className="input">
+    <>
       {label && (
         <label htmlFor={fieldName} className="input__label">
           {label}
@@ -39,12 +32,10 @@ export const Input = ({
       <input
         {...field}
         placeholder={placeholder}
-        className={cx("input--default", { "input--error": showError })}
+        className={cx('input--default', { 'input--error': showError })}
         {...props}
       />
-      <div className="input__text--error">
-        {showError ? errors[fieldName] : ""}
-      </div>
-    </Form>
+      <div className="input__text--error">{showError ? errors[fieldName] : ''}</div>
+    </>
   );
 };

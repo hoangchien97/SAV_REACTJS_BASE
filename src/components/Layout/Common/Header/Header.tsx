@@ -10,7 +10,7 @@ import { authActions, selectIsLoggedIn, selectUserProfile } from '@store/slices/
 import { upFromBreakpoint } from '@utils/mixins';
 import { Svg } from '@components/Common/Svg';
 import Drawer from './Drawer';
-import { history } from '@utils/history';
+import { toast } from 'react-toastify';
 
 const items = [
   { label: 'home', key: 'home', path: '/home' }, // remember to pass the key prop
@@ -75,7 +75,13 @@ const Header = () => {
   const location = useLocation();
 
   const handleLogout = () => {
-    dispatch(authActions.logout());
+    try {
+      // call API logout
+      dispatch(authActions.logout());
+      toast.success('Logout success');
+    } catch (error) {
+      toast.error('Logout failed');
+    }
   };
 
   const content = (

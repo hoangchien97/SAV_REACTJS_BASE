@@ -8,7 +8,7 @@ import { getProfile, login } from '@services/auth';
 import { useAppDispatch } from '@store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { authActions } from '@store/slices/auth';
-import useNotification from '@hooks/useNotification';
+import { toast } from 'react-toastify';
 
 interface ILogin {
   username: string;
@@ -16,7 +16,6 @@ interface ILogin {
 }
 
 export const LoginForm = () => {
-  const { showToast } = useNotification();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -38,7 +37,7 @@ export const LoginForm = () => {
       const res = await getProfile();
       dispatch(authActions.saveProfile(res));
     } catch (error: any) {
-      showToast('error', error.message);
+      toast.error(error.message);
     }
   };
 
@@ -55,9 +54,9 @@ export const LoginForm = () => {
       dispatch(authActions.login(res.AccessToken));
       await fetchProfile();
       navigate('/home');
-      showToast('success', 'Login success');
+      toast.success('Login success');
     } catch (error: any) {
-      showToast('error', error.message);
+      toast.error(error.message);
     }
   };
 
@@ -87,6 +86,7 @@ export const LoginForm = () => {
                       name="password"
                       type="password"
                       component={Input}
+                      fullWidth
                       placeholder="Password"
                     />
                     <button className={styles.formButton} disabled={isSubmitting} type="submit">

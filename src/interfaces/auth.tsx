@@ -23,3 +23,10 @@ export interface ProfileResponse {
   AvatarImage?: string;
   Permission?: string;
 }
+
+export interface UpdateProfileRequest {
+  Name: string;
+  Email: string;
+  Phone: string;
+  Address: string;
+}
