@@ -53,7 +53,7 @@ export const LoginForm = () => {
 
       dispatch(authActions.login(res.AccessToken));
       await fetchProfile();
-      navigate('/home');
+      navigate('/');
       toast.success('Login success');
     } catch (error: any) {
       toast.error(error.message);

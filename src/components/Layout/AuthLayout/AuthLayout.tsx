@@ -13,7 +13,7 @@ function AuthLayout() {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   if (isLoggedIn) {
-    return <Navigate to="/home" state={{ from: location }} replace />;
+    return <Navigate to="/" state={{ from: location }} replace />;
   }
 
   return (

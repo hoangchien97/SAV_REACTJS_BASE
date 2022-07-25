@@ -29,6 +29,7 @@ const Container = styled(Layout.Footer)`
   grid-row-gap: 25px;
   padding: 30px 0;
   justify-items: center;
+  background-color: #ccc;
 `;
 
 const WrapperSocial = styled.div`

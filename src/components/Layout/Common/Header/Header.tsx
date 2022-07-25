@@ -12,14 +12,15 @@ import { Svg } from '@components/Common/Svg';
 import Drawer from './Drawer';
 import { toast } from 'react-toastify';
 
-const items = [
-  { label: 'home', key: 'home', path: '/home' }, // remember to pass the key prop
+const menu = [
+  { label: 'home', key: 'home', path: '/' }, // remember to pass the key prop
   { label: 'about', key: 'about', path: '/about' }, // which is required
+  { label: 'contact', key: 'contact', path: '/contact' }, // which is required
   {
     label: 'Services',
     key: 'Services',
     path: '',
-    itemsChildren: [
+    items: [
       { label: 'Service 1', key: 'service_1', path: '/profile' },
       { label: 'Service 2', key: 'service_2', path: '/profile2' },
     ],
@@ -43,9 +44,11 @@ const Avatar = styled.img`
   }
 `;
 
-const MenuItem = styled(Menu.Item)<{ isActiveMenu: boolean }>`
-  background-color: ${menu => (menu.isActiveMenu ? '#1890ff' : 'initial')};
+const MenuItem = styled(Menu.Item)<{ active: boolean }>`
+  background-color: ${({ active }) => (active ? '#1890ff' : 'initial')};
 `;
+
+const MenuItemSub = styled(MenuItem)``;
 
 const ItemPopover = styled.div`
   padding: 8px 4px;
@@ -108,29 +111,29 @@ const Header = () => {
   };
 
   return (
-    <Layout.Header className="header" color="yellow">
+    <Layout.Header className="header" color="red">
       <div className="logo" />
       {/* <Menu theme="dark" mode="horizontal"  defaultSelectedKeys={["2"]} items={items}> */}
       <Menu theme="dark" mode="horizontal" className="header__nav">
-        {items.map(item => (
+        {menu.map(item => (
           <Fragment>
-            {!item.itemsChildren ? (
+            {!item.items ? (
               <MenuItem
-                key={`${item.key}`}
-                isActiveMenu={location.pathname === item.path}
+                key={`parent-${item.key}`}
                 className="header--black"
+                active={location.pathname === item.path}
               >
                 <Link to={item.path}>{t(`navbar.${item.label}`)}</Link>
               </MenuItem>
             ) : (
-              <Menu.SubMenu title={item.label}>
-                {item.itemsChildren.map(itemChild => (
-                  <MenuItem
-                    isActiveMenu={location.pathname === itemChild.path}
+              <Menu.SubMenu title={item.label} key={`parent-${item.key}`}>
+                {item.items.map(itemChild => (
+                  <MenuItemSub
+                    active={location.pathname === itemChild.path}
                     key={`children-${itemChild.key}`}
                   >
                     <Link to={itemChild.path}>{itemChild.label}</Link>
-                  </MenuItem>
+                  </MenuItemSub>
                 ))}
               </Menu.SubMenu>
             )}

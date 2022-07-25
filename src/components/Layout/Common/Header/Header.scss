@@ -8,10 +8,6 @@
   z-index: 1;
   width: 100%;
 
-  &--black {
-    color: $color-black;
-  }
-
   &__nav {
     display: none !important;
   }
@@ -34,7 +30,8 @@
   height: 40px;
   margin: 12px 16px 12px 0px;
   // background: rgba(255, 255, 255, 0.2);
-  background-image: url('./../../../../../public/assets/images/logo-header.jpeg');
+  background-image: url('./../../../../assets/images/logo-header.jpeg');
+
 }
 
 .site-layout .site-layout-background {

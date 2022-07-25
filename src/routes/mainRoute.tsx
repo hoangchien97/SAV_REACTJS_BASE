@@ -5,7 +5,7 @@ const About = React.lazy(() => import('@pages/About'));
 
 const mainRoute = [
   {
-    path: '/home',
+    path: '/',
     element: <Home />,
   },
   { path: '/about', element: <About /> },
