@@ -94,7 +94,7 @@ const Header = () => {
         <TextItem to="/profile">{t('profile')}</TextItem>
       </ItemPopover>
       <ItemPopover>
-        <Svg name="log-out" width={20} height={20} fill="white" />
+        <Svg name="logout" width={20} height={20} fill="white" />
         <TextItem to="/login" state={{ from: location }} replace onClick={handleLogout}>
           {t('logout')}
         </TextItem>
