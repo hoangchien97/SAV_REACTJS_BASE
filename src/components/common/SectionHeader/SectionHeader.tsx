@@ -10,6 +10,7 @@ const Section = styled.section`
   max-width: 620px;
   width: 100%;
   margin: 0 auto;
+  padding-bottom: 80px
 `;
 
 const Header = styled.p`

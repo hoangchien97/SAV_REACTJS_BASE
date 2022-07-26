@@ -39,6 +39,13 @@ const IframeVideo = styled.iframe`
   width: 100%;
   height: 300px;
 `;
+
+const Video = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const Hero = () => {
   const [videoModalActive, setVideomodalactive] = useState(false);
 
@@ -73,9 +80,9 @@ const Hero = () => {
       </HeroDescriptionWrapper>
 
       <HeroFigure>
-        <div data-video="https://player.vimeo.com/video/174002812" onClick={openModal}>
+        <Video data-video="https://player.vimeo.com/video/174002812" onClick={openModal}>
           <ImageHero className="has-shadow" src={videoPlayer} alt="Hero" width={896} height={504} />
-        </div>
+        </Video>
       </HeroFigure>
       <Modal
         visible={videoModalActive}

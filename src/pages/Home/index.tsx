@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import Hero from '@components/Home/Hero';
 import FeatureTiles from '@components/Home/FeatureTiles';
+import CustomerTestimonials from '@components/Home/CustomerTestimonials';
 
 const Container = styled.div`
   padding-left: 24px;
@@ -14,6 +15,7 @@ const Home = () => {
     <Container>
       <Hero />
       <FeatureTiles />
+      <CustomerTestimonials />
     </Container>
   );
 };
