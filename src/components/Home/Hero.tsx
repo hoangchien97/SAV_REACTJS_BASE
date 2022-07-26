@@ -2,7 +2,8 @@ import styled from '@emotion/styled';
 import { Space, Button, Modal } from 'antd';
 import ButtonGroup from 'antd/lib/button/button-group';
 import React, { useState } from 'react';
-import videoPlayer from '@assets/images/video-placeholder.jpg';
+// import videoPlayer from '@assets/images/video-placeholder.jpg';
+import videoPlayer from './../../assets/images/video-placeholder.jpg';
 
 const HeroContent = styled.div``;
 

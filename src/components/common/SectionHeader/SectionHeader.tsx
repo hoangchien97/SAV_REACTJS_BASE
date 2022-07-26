@@ -17,7 +17,7 @@ const Header = styled.p`
   font-size: 44px;
   line-height: 54px;
   letter-spacing: -0.3px;
-  color: #eceded;
+  color: black;
   font-weight: 800;
 `;
 

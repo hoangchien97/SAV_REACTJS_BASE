@@ -8,7 +8,7 @@ export const Svg = ({ name, ...props }: Props) => {
   return (
     <>
       <svg {...props}>
-        <use xlinkHref={`@assets/svg/symbol-defs.svg#icon-${name}`} />
+        <use xlinkHref={`/svg/symbol-defs.svg#icon-${name}`} />
       </svg>
     </>
   );

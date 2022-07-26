@@ -17,7 +17,7 @@ const LayoutMain = styled(Content)`
   display: table;
 
   // background-color: #151719;
-  background-color: #c5c2c2;
+  // background-color: #c5c2c2;
   // height: calc(100vh - 56px);
   // overflow: auto;
   // &::-webkit-scrollbar {
