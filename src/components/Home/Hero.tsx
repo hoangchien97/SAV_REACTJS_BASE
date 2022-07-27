@@ -2,8 +2,6 @@ import styled from '@emotion/styled';
 import { Space, Button, Modal } from 'antd';
 import ButtonGroup from 'antd/lib/button/button-group';
 import React, { useState } from 'react';
-// import videoPlayer from '@assets/images/video-placeholder.jpg';
-import videoPlayer from './../../assets/images/video-placeholder.jpg';
 
 const HeroContent = styled.div``;
 
@@ -81,7 +79,13 @@ const Hero = () => {
 
       <HeroFigure>
         <Video data-video="https://player.vimeo.com/video/174002812" onClick={openModal}>
-          <ImageHero className="has-shadow" src={videoPlayer} alt="Hero" width={896} height={504} />
+          <ImageHero
+            className="has-shadow"
+            src="./images/video-placeholder.jpg"
+            alt="Hero"
+            width={896}
+            height={504}
+          />
         </Video>
       </HeroFigure>
       <Modal

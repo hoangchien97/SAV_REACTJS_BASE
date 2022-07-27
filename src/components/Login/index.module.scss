@@ -1,7 +1,7 @@
 @import '@styles/scss/index.scss';
 
 .login {
-  background-image: url('./../../assets/images/bg-login.webp');
+  background-image: url('././../../../public/images/bg-login.webp');
   height: 100vh;
   background-repeat: initial;
   position: relative;
@@ -14,7 +14,7 @@
 }
 
 .logo {
-  background-image: url('./../../assets/images/logo.png');
+  background-image: url('././../../../public/images/logo.png');
 }
 
 .card {
@@ -31,7 +31,7 @@
 }
 
 .cardLeft {
-  background-image: url('./../../assets/images/bg-card_right.jpeg');
+  background-image: url('./../../../public/images/bg-card_right.jpeg');
   background-position: center;
   background-size: cover;
   border-right: thin solid #000;
