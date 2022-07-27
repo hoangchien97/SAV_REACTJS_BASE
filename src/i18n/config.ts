@@ -1,11 +1,11 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-import Backend from "i18next-http-backend";
-import LanguageDetector from "i18next-browser-languagedetector";
-import de from "./locales/de.json";
-import en from "./locales/en.json";
-import vi from "./locales/vi.json";
+import Backend from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import de from './locales/de.json';
+import en from './locales/en.json';
+import vi from './locales/vi.json';
 
 export const resources = {
   en: {
@@ -32,16 +32,16 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    fallbackLng: "en",
+    fallbackLng: 'en',
     debug: true,
-    lng: "en",
+    lng: 'en',
     resources,
-    supportedLngs: ["en", "de", "vi"],
+    supportedLngs: ['en', 'de', 'vi'],
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
     backend: {
-      loadPath: "i18n/locales/{{lng}}.json",
+      loadPath: 'i18n/locales/{{lng}}.json',
     },
   });
 

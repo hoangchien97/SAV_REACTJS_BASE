@@ -44,3 +44,19 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Structure:
+
+- components : chứa các components trong dự án. Sâu hơn thì có cả folder Common, chứa các components chung, thường xuyên đc sử dụng
+- public - chứa folder images, fonts
+- constants: định nghĩa các constants, enum
+- hooks: chứa các custom hook.
+- data: chứa các file mook data
+- i18n: chứa các file json của ngôn ngữ tương ứng.
+- interfaces: chứa các file định nghĩa interfaces
+- pages: mỗi folder trong page tương ứng vào router
+- routes: cấu hình router
+- services: nơi cấu hình axios để call API cho dự án
+- store: cấu hình redux, để quản lý state
+- styles: chứa 1 số file scss cấu hình cho cả dự án.
+- utils: chứa các function dùng trong dự án
