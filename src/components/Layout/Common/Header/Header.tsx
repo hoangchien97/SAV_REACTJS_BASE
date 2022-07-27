@@ -11,6 +11,7 @@ import { upFromBreakpoint } from '@utils/mixins';
 import { Svg } from '@components/Common/Svg';
 import Drawer from './Drawer';
 import { toast } from 'react-toastify';
+import SelectLanguage from './SelectLanguage';
 
 const menu = [
   { label: 'home', key: 'home', path: '/' }, // remember to pass the key prop
@@ -67,6 +68,13 @@ const TextItem = styled(Link)`
   font-weight: bold;
 `;
 
+const SectionLanguage = styled.div`
+  display: none;
+  ${upFromBreakpoint('small')} {
+    display: block;
+  }
+`;
+
 const Header = () => {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
@@ -112,7 +120,9 @@ const Header = () => {
 
   return (
     <Layout.Header className="header" color="red">
-      <div className="logo" />
+      <div className="logo">
+        <Svg name="logo-text" width={91} height={54} />
+      </div>
       <Menu theme="dark" mode="horizontal" className="header__nav">
         {menu.map(item => (
           <>
@@ -140,6 +150,12 @@ const Header = () => {
         ))}
       </Menu>
 
+      {/* Select Languages */}
+
+      <SectionLanguage>
+        <SelectLanguage />
+      </SectionLanguage>
+
       {user && (
         <Popover
           content={content}
@@ -149,6 +165,7 @@ const Header = () => {
             width: '200px',
             borderRadius: '4px',
           }}
+          style={{ marginLeft: '2rem' }}
         >
           <Avatar src={user.AvatarImage} />
         </Popover>

@@ -57,7 +57,7 @@ const Footer = () => {
   const date = new Date();
   return (
     <Container className="footer">
-      <Svg name="redfox" width={20} height={20} fill="red" />
+      <Svg name="logo" width={20} height={20} fill="red" />
       <WrapperSocial>
         {socials.map(({ name, value, url }) => {
           return <SvgSocial name={name} key={value} onClick={() => window.open(url, '_blank')} />;
