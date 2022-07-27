@@ -7,7 +7,7 @@ const AuthLayout = React.lazy(() => import('@components/Layout/AuthLayout'));
 const MainLayout = React.lazy(() => import('@components/Layout/MainLayout'));
 
 function Routes() {
-  let element = useRoutes([
+  const element = useRoutes([
     // AuthLayout
     {
       element: <AuthLayout />,

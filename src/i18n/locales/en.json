@@ -6,7 +6,8 @@
   },
   "navbar": {
     "home": "Home",
-    "about": "About"
+    "about": "About",
+    "contact": "Contact"
   },
   "profile": "Profile",
   "logout": "Logout"

@@ -15,7 +15,7 @@ interface Props {
   form: any;
 }
 
-export const Input = ({ name, label, value, placeholder, required = false, ...props }: Props) => {
+export const Input = ({ label, placeholder, required = false, ...props }: Props) => {
   const { field, form } = props;
   const fieldName = field.name;
   const { errors, touched } = form;

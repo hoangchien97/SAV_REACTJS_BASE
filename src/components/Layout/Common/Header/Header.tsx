@@ -113,10 +113,9 @@ const Header = () => {
   return (
     <Layout.Header className="header" color="red">
       <div className="logo" />
-      {/* <Menu theme="dark" mode="horizontal"  defaultSelectedKeys={["2"]} items={items}> */}
       <Menu theme="dark" mode="horizontal" className="header__nav">
         {menu.map(item => (
-          <Fragment>
+          <>
             {!item.items ? (
               <MenuItem
                 key={`parent-${item.key}`}
@@ -137,7 +136,7 @@ const Header = () => {
                 ))}
               </Menu.SubMenu>
             )}
-          </Fragment>
+          </>
         ))}
       </Menu>
 

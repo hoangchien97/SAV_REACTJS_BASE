@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { LANGUAGES } from '@constants';
 import { LanguageOption } from '@interfaces';
 import { useTranslation } from 'react-i18next';
