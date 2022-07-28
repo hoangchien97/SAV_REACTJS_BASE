@@ -30,4 +30,8 @@ module.exports = {
       '@constants': path.resolve(__dirname, 'src/constants'),
     },
   },
+
+  babel: {
+    plugins: ['@emotion'],
+  },
 };

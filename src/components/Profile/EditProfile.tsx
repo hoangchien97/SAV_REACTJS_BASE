@@ -46,7 +46,6 @@ export const EditProfile = () => {
     values: ProfileResponse,
     { setSubmitting }: FormikHelpers<ProfileResponse>,
   ) => {
-    console.log('values :>> ', values);
     setSubmitting(true);
     try {
       await updateProfile(values as UpdateProfileRequest);

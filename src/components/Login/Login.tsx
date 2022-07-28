@@ -9,6 +9,8 @@ import { useAppDispatch } from '@store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { authActions } from '@store/slices/auth';
 import { toast } from 'react-toastify';
+import { Button, Space } from 'antd';
+import { Svg } from '@components/Common/Svg';
 
 interface ILogin {
   username: string;
@@ -25,7 +27,7 @@ export const LoginForm = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required('This field is required.').email('Invalid email format'),
+    username: Yup.string().required('Username is required.').email('Invalid email format'),
     password: Yup.string()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters')
@@ -41,9 +43,10 @@ export const LoginForm = () => {
     }
   };
 
-  const onSubmit = async (values: ILogin, actions: FormikHelpers<ILogin>) => {
+  const handleSubmit = async (values: ILogin, { setSubmitting }: FormikHelpers<ILogin>) => {
     // console.log("values", values);
     // console.log("actions", actions);
+    setSubmitting(true);
     try {
       const params: LoginRequest = {
         Email: values.username,
@@ -57,6 +60,8 @@ export const LoginForm = () => {
       toast.success('Login success');
     } catch (error: any) {
       toast.error(error.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -64,23 +69,22 @@ export const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       // onSubmit={(values) => console.log("Submit: ", values)}
     >
       {formikProps => {
         // do something here ...
-        // const { values, errors, touched } = formikProps;
+        const { isValid, dirty, isSubmitting } = formikProps;
         // console.log({ values, errors, touched });
-        const isSubmitting = formikProps.isSubmitting;
         return (
           <>
             <div className={styles.login}>
               <div className={styles.card}>
                 <div className={styles.cardLeft}></div>
                 <div className={styles.cardRight}>
-                  <div className={styles.logo}>LOGO</div>
-                  <div className={styles.title}>SAVVYCOM</div>
-                  <Form>
+                  <Svg name="logo" width={40} height={40} />
+                  <div className={styles.title}></div>
+                  <Form style={{ width: '100%', padding: '0 2rem' }}>
                     <Field name="username" component={Input} placeholder="Username" />
                     <Field
                       name="password"
@@ -89,9 +93,18 @@ export const LoginForm = () => {
                       fullWidth
                       placeholder="Password"
                     />
-                    <button className={styles.formButton} disabled={isSubmitting} type="submit">
-                      Login
-                    </button>
+                    <Space style={{ display: 'flex' }}>
+                      <Button
+                        type="primary"
+                        size="large"
+                        disabled={!(isValid && dirty)}
+                        loading={isSubmitting}
+                        htmlType="submit"
+                        style={{ width: '100px' }}
+                      >
+                        Login
+                      </Button>
+                    </Space>
                   </Form>
                 </div>
               </div>

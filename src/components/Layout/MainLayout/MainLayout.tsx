@@ -2,7 +2,6 @@ import Header from '@/components/Layout/Common/Header';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Footer from '../Common/Footer';
 import { Layout } from 'antd';
-import styles from './index.module.scss';
 import { useAppSelector } from '@store/hooks';
 import { selectIsLoggedIn } from '@store/slices/auth';
 import { colors } from '@data/styles';
@@ -51,13 +50,11 @@ function MainLayout() {
   return (
     <Layout style={{ height: '100vh' }}>
       <Header />
-      {/* <Content style={{ marginTop: '64px', padding: '1rem' }}> */}
       <LayoutMain>
         <Container>
           <Outlet />
         </Container>
       </LayoutMain>
-      {/* </Content> */}
       <Footer />
     </Layout>
   );

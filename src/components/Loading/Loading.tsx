@@ -122,7 +122,6 @@ const AnimatedBar = styled.div`
 
 const Loader = () => {
   return (
-    // loading component for suspense fallback
     <Content>
       <LoadingContainer>
         {/* <LoadingText>Loading...</LoadingText> */}

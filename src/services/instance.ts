@@ -34,8 +34,8 @@ const Instance = Axios.create({
 Instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const state = store.getState();
-    const accessToken = state.auth.accessToken;
-    if (accessToken !== null) {
+    const accessToken = state.auth.accessToken as string;
+    if (accessToken) {
       config.headers = {
         ...config.headers,
         Authorization: `Bearer ${accessToken}`,

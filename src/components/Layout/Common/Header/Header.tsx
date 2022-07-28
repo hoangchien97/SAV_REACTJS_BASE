@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { authActions, selectIsLoggedIn, selectUserProfile } from '@store/slices/auth';
+import { authActions, selectUserProfile } from '@store/slices/auth';
 import { upFromBreakpoint } from '@utils/mixins';
 import { Svg } from '@components/Common/Svg';
 import Drawer from './Drawer';
@@ -36,11 +36,10 @@ const Avatar = styled.img`
       cursor: pointer;
     }
     display: flex;
-    max-width: 40px !important;
+    width: 40px !important;
     align-items: center;
     align-self: center;
     height: 40px;
-    width: 100%;
     border-radius: 50%;
   }
 `;
@@ -80,7 +79,6 @@ const Header = () => {
   const [visible, setVisible] = useState(false);
   const dispatch = useAppDispatch();
 
-  const isLoggedIn = useAppSelector(selectIsLoggedIn);
   const user = useAppSelector(selectUserProfile);
 
   const location = useLocation();
